@@ -13,12 +13,26 @@ formulariozinho.addEventListener("submit", (e) => {
   let tamanhoArray = Number(formulariozinho.ggg.value);
   console.log(tamanhoArray);
 
+  //preencher array
   var paz = [];
   paz = preencherArray(tamanhoArray);
   exibirarray(paz);
 
+  //maior valor
   let maiorValor = getMaiorValor(paz);
   resMaiorValor.innerText = maiorValor;
+
+  //menor valor
+  let menorValor = getMenorValor(paz);
+  respMenorValor.innerText = menorValor;
+
+  //soma dos elementos
+  let somaDosElementos = getSoma(paz);
+  respSomaElementos.innerText = somaDosElementos;
+
+  //media dos elementos
+  let mediaDosElementos = getMedia(paz, somaDosElementos);
+  respMediaElementos.innerText = mediaDosElementos;
 });
 
 function preencherArray(tamanhoArray) {
@@ -54,4 +68,26 @@ function exibirarray(array) {
   for (let i = 0; i < array.length; i++) {
     console.log(array[i]);
   }
+}
+
+function getMenorValor(array) {
+  let menorvalor = 999999;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] < menorvalor) {
+      menorvalor = array[i];
+    }
+  }
+  return menorvalor;
+}
+function getSoma(array) {
+  let soma = 0;
+  for (let i = 0; i < array.length; i++) {
+    soma += array[i];
+  }
+  return soma;
+}
+
+function getMedia(array, soma) {
+  let media = soma / array.length;
+  return media;
 }
