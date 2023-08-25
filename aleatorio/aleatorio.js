@@ -13,11 +13,11 @@ formulariozinho.addEventListener("submit", (e) => {
   let tamanhoArray = Number(formulariozinho.ggg.value);
   console.log(tamanhoArray);
 
-  let paz = [];
-  paz = preencherArray(paz, tamanhoArray);
+  var paz = [];
+  paz = preencherArray(tamanhoArray);
+  exibirarray(paz);
 
   let maiorValor = getMaiorValor(paz);
-
   resMaiorValor.innerText = maiorValor;
 });
 
@@ -27,23 +27,31 @@ function preencherArray(tamanhoArray) {
     novoarray.push(gerarnumeroAleatorio());
   }
 
-  return array;
+  return novoarray;
 }
 
 function gerarnumeroAleatorio() {
   mim = 40;
   max = 400;
   range = max - mim;
-  aletorio = Math.floor(Math.random * range + mim);
+  aletorio = Math.floor(Math.random() * range + mim);
 
-  return aleatorio;
+  return aletorio;
 }
 
 function getMaiorValor(array) {
-  maiorValor = -1;
-  
-    
-  
+  let maiorValor = -1;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] > maiorValor) {
+      maiorValor = array[i];
+    }
+  }
 
-  return menorvalor;
+  return maiorValor;
+}
+
+function exibirarray(array) {
+  for (let i = 0; i < array.length; i++) {
+    console.log(array[i]);
+  }
 }
