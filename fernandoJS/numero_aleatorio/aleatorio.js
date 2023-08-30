@@ -33,6 +33,18 @@ formulariozinho.addEventListener("submit", (e) => {
   //media dos elementos
   let mediaDosElementos = getMedia(paz, somaDosElementos);
   respMediaElementos.innerText = mediaDosElementos;
+
+  //quantidade de pares
+  let qtdPares = getPares(paz);
+  respQtdPar.innerText = qtdPares;
+
+  //quantidade de impares
+  let qtdImpares = getImpares(paz);
+  respQtdImpar.innerText = qtdImpares;
+
+  //mostrar array
+  let arrayzinho = getarrayzinho(paz);
+  respArray.innerText = arrayzinho;
 });
 
 function preencherArray(tamanhoArray) {
@@ -90,4 +102,33 @@ function getSoma(array) {
 function getMedia(array, soma) {
   let media = soma / array.length;
   return media;
+}
+
+function getPares(array) {
+    let qtd =0;
+    for(let i =0; i<array.length; i++) {
+        if(array[i] % 2 == 0) {
+            qtd++;
+        }
+    }
+
+    return qtd;
+}
+
+function getImpares(array) {
+    let qtd =0;
+    for(let i =0; i<array.length; i++) {
+        if(array[i] % 2 != 0) {
+            qtd++;
+        }
+    }
+    return qtd;
+}
+
+function getarrayzinho(array) {
+    let arrayString= ""
+    for(let i =0; i<array.length; i++) {
+        arrayString += " | " +array[i];
+    }
+    return arrayString;
 }
