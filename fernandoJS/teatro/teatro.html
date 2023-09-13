@@ -10,7 +10,7 @@
 <body>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-9">
+                <div class="col-sm-3">
                     <img src="igm/teatro.jpg" class="img-fluid"alt="">
                 </div>
             </div>
@@ -22,8 +22,24 @@
                             <p><label for="inPoltrona">N.o pltrona</label>
                             <input type="number" class="form-control" id="inPoltrona" mim="1" required autofocus></p>
                         </div>
+                        <div class="col-sm-4">
+                            <input type="submit" class="btn btn-primary mt-4">
+                            <input type="button" class="btn btn-danger mt-4" value="confirmar reserva" id="btnConfirmar">
+                        </div>
+                        <div class="col-sm-6">LEgenda: 
+                            <p class="mt-2">
+                                <img src="igm/disponivel.jpg" alt=""> disponivel
+                                <img src="igm/reservada.jpg" alt=""> reservada
+                                <img src="igm/ocupada.jpg" alt=""> ocupada
+                            </p>
+                        </div>
                     </div>
                 </form>
+                <div class="row">
+                    <div class="col-sm-12" id="dvPalco">
+                        <p class="bg-primary text-white text-center"> palco do teatro</p>
+                    </div>
+                </div>
             </div>
         </div>
 
