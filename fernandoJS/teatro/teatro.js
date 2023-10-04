@@ -30,6 +30,60 @@ window.addEventListener("Load", () => {
         figure.appendChild(imgStatus);
         figure.appendChild(figgureCap);
 
+
+        if(i% 24 == 12) figure.style.marginRight = "60px"
+
         dvPalco.appendChild(figure);
+
+        if(i%24 ==0  && dvPalco.appendChild(document.createElement("br")));
         }
+})
+
+formulariozinho.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const poltrona = Number(formulariozinho.inPoltrona.value);
+
+    if(poltrona> poltronas) {
+        alert("informe um numero de poltrona valido")
+        formulariozinho.inPoltrona.focus();
+        formulariozinho.inPoltrona.value ="";
+        return;
+    }
+
+    if(ocupadas.includes(poltrona.toString()) ) {
+        alert(`poltrona ${poltrona} ja esta reservada`)
+        formulariozinho.inPoltrona.focus();
+        formulariozinho.inPoltrona.value ="";
+        return;
+    }
+
+    //caputra a imagem da poltroda, filha de divPalco. É 01 pois começa em zero
+    const imgPoltrona = dvPalco.querySelectorAll("img")[poltrona -1];
+    imgPoltrona.src ="igm/reservada.jpg" //modifica o atributo da imagem
+    reservadas.push(poltrona);
+
+    formulariozinho.inPoltrona.value="";
+    formulariozinho.inPoltrona.focus();
+
+})
+
+formulariozinho.btnConfirmar.addEventListener("click", () => {
+    if(reservadas.length ==0) {
+        alert("nao ha poltronas reservadas")
+        formulariozinho.inPoltrona.focus();
+        return;
+    }
+    
+    const ocupadas = localStorage.getItem("teatroOcupadas")
+    ? localStorage.getItem("teatroOcupadas").split(";") : [];
+    
+    for(let i = reservadas.length -1; i>= 0; i--) {
+        ocupadas.push(reservadas[i]);
+        const imgPoltrona = dvPalco.querySelectorAll("img")[reservadas[i] -1];
+        imgPoltrona.src = "igm/ocupada.jpg";
+
+        reservadas.pop();
+    }
+
+    localStorage.setItem("teatroOcupadas", opcupadas.join(";"));
 })
